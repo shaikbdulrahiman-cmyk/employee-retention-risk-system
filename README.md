@@ -40,7 +40,7 @@ The project generates synthetic workforce data for 10,000 employees.
 | Teams | 5 |
 | Engagement Surveys | 79,539 |
 | Workload Snapshots | 920,824 |
-| Tenure Snapshots | 217,826 |
+| Tenure Snapshots | 221,186 |
 | Compensation Bands | 24 |
 | Promotion History | 1,200 |
 | Interventions | 2,617 |
