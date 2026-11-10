@@ -1,0 +1,47 @@
+{
+    "project": "Employee Retention Risk System",
+    "random_seed": 20261022,
+    "generator": "src/generators/generate_all.py",
+    "datasets": {
+        "employees.csv": {
+            "rows": 10000,
+            "sha256": "3a332efa2f3bb449007e0a51056d5155e13ef7dbd679bd31e65a2e958d463588"
+        },
+        "roles.csv": {
+            "rows": 6,
+            "sha256": "54114bfd49161c0229c402cc688e3ca92dc38a569d7a1aff9d8a6f5e50b061e2"
+        },
+        "teams.csv": {
+            "rows": 5,
+            "sha256": "6f85e1a9fcc1487826080be4b33184f7cc78d577e23d73c6fe0d9b4ebc5ada66"
+        },
+        "promotion_history.csv": {
+            "rows": 1200,
+            "sha256": "0c6bb464336dbb8b956816c0d1ae56e89c4e3be40ead4b91ce8e6a275f990546"
+        },
+        "engagement_surveys.csv": {
+            "rows": 79539,
+            "sha256": "4aef80db451886d1744ca4de0d13b88928957a5a957dd4ac8f7885d7a603cb12"
+        },
+        "workload_snapshots.csv": {
+            "rows": 920824,
+            "sha256": "75feff5613f35b2a6786b291e32fdd674b1ece8d726b32aebc1b1b672cef4955"
+        },
+        "tenure_snapshots.csv": {
+            "rows": 221186,
+            "sha256": "bb85732d39d52eac190264687dc22b2ffbf6c66040323ba6769b07a6f4dd2eea"
+        },
+        "compensation_bands.csv": {
+            "rows": 24,
+            "sha256": "e1736e8ae3066dfb18cb5aec9306e0444bddd9a7d83629626d412695e29567e4"
+        },
+        "attrition_outcomes.csv": {
+            "rows": 10000,
+            "sha256": "e69d9e33faf7fe0206629e5cc2bbec3006212eee4821c6c8e28fa2061d8e4196"
+        },
+        "interventions.csv": {
+            "rows": 2617,
+            "sha256": "8f931133349b89e9bb117d6e4fdfcdbe44cc19f2b76d1dc95dd21b5025255293"
+        }
+    }
+}
