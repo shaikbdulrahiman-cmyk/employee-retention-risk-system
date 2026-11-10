@@ -2,9 +2,9 @@
 
 ## 1. Project Overview
 
-The Employee Retention Risk Identification and Intervention Management System is a Python-based analytical solution designed to identify workforce engagement and workload patterns that may indicate employee retention concerns.
+The Employee Retention Risk Identification and Intervention Management System is a Python-based analytical solution designed to identify workforce engagement, tenure and workload patterns that may indicate employee retention concerns.
 
-The system analyzes synthetic employee data and prioritizes supportive retention conversations through a risk-scoring approach.
+The system analyzes synthetic employee data and prioritizes supportive retention conversations through an explainable, rule-based risk-scoring approach.
 
 **Important:** This system supports human review only. It must not be used to make automated employment decisions.
 
@@ -16,6 +16,7 @@ The system analyzes synthetic employee data and prioritizes supportive retention
 - Generate employee risk scores and categories.
 - Recommend supportive interventions.
 - Provide interactive workforce analytics.
+- Maintain traceability through historical records and validation.
 
 ## 3. Technologies Used
 
@@ -30,7 +31,7 @@ The system analyzes synthetic employee data and prioritizes supportive retention
 
 ## 4. Dataset Information
 
-The project generates synthetic data for 10,000 employees.
+The project generates synthetic workforce data for 10,000 employees.
 
 | Dataset | Records |
 |---|---:|
@@ -40,9 +41,22 @@ The project generates synthetic data for 10,000 employees.
 | Engagement Surveys | 79,539 |
 | Workload Snapshots | 920,824 |
 | Tenure Snapshots | 217,826 |
-| Promotions | 1,200 |
-| Interventions | 2,631 |
+| Compensation Bands | 24 |
+| Promotion History | 1,200 |
+| Interventions | 2,617 |
 | Attrition Outcomes | 10,000 |
+| Employee Risk Analysis | 10,000 |
+
+**Data generation configuration:**
+
+- Random seed: `20261022`
+- Employee population: 10,000
+- Historical period: 24 months
+- Prediction cutoff: October 1, 2026
+- Attrition outcome horizon: April 1, 2027
+- Synthetic attrition rate: 8.74%
+
+All generated workforce records are synthetic and do not represent real employees.
 
 ## 5. System Features
 
@@ -51,24 +65,30 @@ The project generates synthetic data for 10,000 employees.
 - Workload and overtime analysis.
 - Employee retention risk scoring.
 - Low, Medium and High risk classification.
+- Explainable risk reasons.
 - Human-review recommendations.
+- Supportive intervention tracking.
 - Interactive Streamlit dashboard.
 - CSV exports and SQLite database.
 - Data validation and automated testing.
+- Separate ground-truth records for documented edge cases.
 
 ## 6. Risk Analysis
 
 The system calculates a heuristic risk score using engagement and workload indicators.
 
-Employees are classified into:
+The scoring rules include:
 
-- Low Risk
-- Medium Risk
-- High Risk
+- Low engagement: additional risk points.
+- Elevated working hours: additional risk points.
+- High overtime: additional risk points.
+- Strong engagement: a risk reduction.
 
-Higher-priority cases are presented for supportive human review.
+Employees are classified into Low, Medium and High risk categories.
 
-These scores are illustrative prioritization signals, not validated individual attrition predictions.
+Each risk result includes explanatory reasons and a review recommendation.
+
+These scores are illustrative prioritization signals, not independently validated individual attrition predictions.
 
 ## 7. Dashboard
 
@@ -79,6 +99,7 @@ The Streamlit dashboard provides:
 - Engagement overview.
 - Employee search.
 - Risk review tables.
+- Prioritized human-review recommendations.
 - CSV download functionality.
 
 ## 8. Project Structure
@@ -88,9 +109,10 @@ employee_retention_risk_system/
 ├── data/
 │   ├── raw/
 │   ├── processed/
+│   ├── ground_truth.csv
 │   └── employee_retention.db
 ├── docs/
-├── outputs/
+│   └── data_dictionary.md
 ├── src/
 │   ├── generators/
 │   ├── analysis/
@@ -98,6 +120,7 @@ employee_retention_risk_system/
 │   ├── database/
 │   └── dashboard/
 ├── tests/
+│   └── test_project.py
 ├── config.py
 ├── requirements.txt
 └── README.md
@@ -108,8 +131,8 @@ employee_retention_risk_system/
 Clone the repository:
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd employee_retention_risk_system
+git clone https://github.com/shaikbdulrahiman-cmyk/employee-retention-risk-system.git
+cd employee-retention-risk-system
 ```
 
 Create a virtual environment:
@@ -156,21 +179,43 @@ Build the SQLite database:
 python src/database/build_database.py
 ```
 
-## 11. Testing Results
+## 11. Testing and Validation Results
 
 Automated testing completed successfully.
 
-**Result: 10 tests passed.**
+**Pytest result: 15 tests passed.**
 
-Validation checks cover employee records, primary keys, foreign-key relationships, attrition outcomes, risk scores and risk categories.
+Data validation completed successfully with:
 
-## 12. Ethical Considerations
+- Primary-key checks passed.
+- Foreign-key checks passed.
+- Date validation passed.
+- Survey and tenure validation passed.
+- Intervention lifecycle validation passed.
+- Attrition outcome validation passed.
+- Risk analysis validation passed.
+- Total validation errors: 0.
+- Total validation warnings: 0.
+
+The generated attrition rate was 8.74%, within the configured target range of 5-15%.
+
+## 12. Documentation and Ground Truth
+
+- `docs/data_dictionary.md` documents the dataset entities, fields, relationships and validation rules.
+- `data/ground_truth.csv` contains four documented edge cases, expected outcomes and model-input exclusion flags.
+
+Ground-truth records are kept separate from the model input datasets.
+
+## 13. Ethical Considerations
 
 - Uses synthetic data rather than real employee personal records.
 - Risk scores are intended only to support human review.
 - Missing engagement information must not automatically be treated as poor performance.
+- Risk indicators must be explainable and reviewable.
 - No automated hiring, firing, promotion or disciplinary decisions should be made using this system.
 
-## 13. Conclusion
+## 14. Conclusion
 
-This project demonstrates an end-to-end employee retention analytics workflow using Python, data generation, risk analysis, SQLite, Streamlit and automated testing. It provides workforce insights and helps organize supportive employee retention conversations.
+This project demonstrates an end-to-end employee retention analytics workflow using Python, synthetic data generation, risk analysis, SQLite, Streamlit and automated testing.
+
+It provides explainable workforce insights, documents data-quality edge cases and helps organize supportive employee retention conversations while preserving human oversight.
